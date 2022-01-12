@@ -125,7 +125,7 @@ if canvas_result.image_data is not None:
         # input image for network should be (1,1,28,28)
         output0 = Network(torch.unsqueeze(tensor_image, dim=0).to(device=device))
            
-        st.write(output0)
+        # st.write(output0)
         certainty, output = torch.max(output0[0], 0)
         certainty = certainty.clone().cpu().item()
         output = output.clone().cpu().item()
