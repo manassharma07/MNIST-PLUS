@@ -80,16 +80,24 @@ if canvas_result.image_data is not None:
 #     print(mask)
     # Check if centering/masking was successful
 #     plt.imshow(mask, cmap='viridis') 
-    output_image = Image.fromarray(mask)
-    compressed_output_image = output_image.resize((22,22))
+    output_image = Image.fromarray(mask) # mask has values in [0-255] as expected
+    # Now we need to resize, but it causes problems with default arguments as it changes the range of pixel values to be negative or positive
+    # compressed_output_image = output_image.resize((22,22))
+    # Therefore, we use the following:
+    compressed_output_image = output_image.resize((22,22), Image.BILINEAR) # PIL.Image.NEAREST or PIL.Image.BILINEAR also performs good
 
     convert_tensor = torchvision.transforms.ToTensor()
     tensor_image = convert_tensor(compressed_output_image)
+    # Another problem we face is that in the above ToTensor() command, we should have gotten a normalized tensor with pixel values in [0,1]
+    # But somehow it doesn't happen. Therefore, we need to normalize manually
+    tensor_image = tensor_image/255.
+    # Padding
     tensor_image = torch.nn.functional.pad(tensor_image, (3,3,3,3), "constant", 0)
     # Normalization shoudl be done after padding i guess
     convert_tensor = torchvision.transforms.Normalize((0.1281), (0.3043)) # Mean and std of MNIST_plus
     tensor_image = convert_tensor(tensor_image)
     # st.write(tensor_image.shape)
+    # Shape of tensor image is (1,28,28)
     
 
 
@@ -114,6 +122,7 @@ if canvas_result.image_data is not None:
     device='cpu'
     ### Compute the predictions
     with torch.no_grad():
+        # input image for network should be (1,1,28,28)
         output0 = Network(torch.unsqueeze(tensor_image, dim=0).to(device=device))
            
         # st.write(output0)
