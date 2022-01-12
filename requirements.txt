@@ -4,5 +4,5 @@ torch==1.10.1
 torchvision==0.11.2
 streamlit_drawable_canvas==0.8.0
 opencv-python==4.5.5.62
-PIL==7.2.0
+Pillow==7.2.0
 matplotlib==3.5.0
