@@ -144,9 +144,9 @@ if canvas_result.image_data is not None:
     output_probabilities = model.predict(tensor_image.reshape(1,784))
     prediction = np.argmax(output_probabilities)
 
-    top_3_probabilities = output_probabilities[0].argsort()[-3:][::-1]
-    ind = output_probabilities[0].argsort()[-3:][::-1]
-    top_3_certainties = output_probabilities[0,ind]*100
+    # top_3_probabilities = output_probabilities[0].argsort()[-3:][::-1]
+    # ind = output_probabilities[0].argsort()[-3:][::-1]
+    # top_3_certainties = output_probabilities[0,ind]*100
 
     st.write('### Prediction') 
     st.write('### '+str(prediction))
@@ -177,10 +177,10 @@ if canvas_result.image_data is not None:
     st.write(str(prediction))
     st.write('### Certainty')    
     st.write(str(output_probabilities[0,prediction]*100) +'%')
-    st.write('### Top 3 candidates')
-    st.write(top_3_probabilities)
-    st.write('### Certainties %')    
-    st.write(top_3_certainties)
+    # st.write('### Top 3 candidates')
+    # st.write(top_3_probabilities)
+    # st.write('### Certainties %')    
+    # st.write(top_3_certainties)
 
 
 
