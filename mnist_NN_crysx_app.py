@@ -35,10 +35,10 @@ realtime_update = st.sidebar.checkbox("Update in realtime", True)
 def make_sidebar():
     # st.sidebar.markdown("## [CrysX-NN](https://github.com/manassharma07/crysx_nn)")
     st.sidebar.write('\n\n ## Neural Network Library Used')
-    st.sidebar.image('logo_crysx_nn.png')
+    # st.sidebar.image('logo_crysx_nn.png')
     st.sidebar.caption('https://github.com/manassharma07/crysx_nn')
     st.sidebar.write('## Neural Network Architecture Used')
-    st.sidebar.image('neural_network_visualization.png')
+    # st.sidebar.image('neural_network_visualization.png')
 
 make_sidebar()
 
