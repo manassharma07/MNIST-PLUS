@@ -38,9 +38,10 @@ def make_sidebar():
     # st.sidebar.image('logo_crysx_nn.png')
     st.sidebar.caption('https://github.com/manassharma07/crysx_nn')
     st.sidebar.write('## Neural Network Architecture Used')
-    st.sidebar.write('Inputs: Flattened 28x28=784')
-    st.sidebar.write('Hidden layer of size 256 with ReLU activation Function')
-    st.sidebar.write('Output layer of size 10 with Softmax activation Function')
+st.sidebar.write('1. **Inputs**: Flattened 28x28=784')
+st.sidebar.write('2. **Hidden layer** of size **256** with **ReLU** activation Function')
+st.sidebar.write('3. **Output layer** of size **10** with **Softmax** activation Function')
+st.sidebar.write('Training was done for 10 epochs with Binary Cross Entropy Loss function.')
     # st.sidebar.image('neural_network_visualization.png')
 
 make_sidebar()
