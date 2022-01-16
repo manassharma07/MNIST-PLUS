@@ -6,7 +6,7 @@ from PIL import Image
 import cv2
 from crysx_nn import network
 
-@st.cache
+# @st.cache
 def create_and_load_model():
     nInputs = 784 # No. of nodes in the input layer
     neurons_per_layer = [256, 10] # Neurons per layer (excluding the input layer)
