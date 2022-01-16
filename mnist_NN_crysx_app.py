@@ -161,11 +161,11 @@ if canvas_result.image_data is not None:
 
         st.write('## Breakdown of the prediction process:') 
 
-        # st.write('### Image being used as input')
-        # st.image(canvas_result.image_data)
+        st.write('### Image being used as input')
+        st.image(canvas_result.image_data)
 
-        # st.write('### Image as a grayscale Numpy array')
-        # st.write(input_image_gs_np)
+        st.write('### Image as a grayscale Numpy array')
+        st.write(input_image_gs_np)
 
         st.write('### Processing steps:')
         st.write('1. Find the bounding box of the digit blob and use that.')
@@ -187,8 +187,10 @@ if canvas_result.image_data is not None:
         st.write('### Certainty')    
         st.write(str(output_probabilities[0,prediction]*100) +'%')
         st.write('### Top 3 candidates')
+        # st.write(top_3_probabilities)
         st.write(str(top_3_probabilities))
         st.write('### Certainties %')    
+        # st.write(top_3_certainties)
         st.write(str(top_3_certainties))
 
 
