@@ -141,6 +141,8 @@ if canvas_result.image_data is not None:
     st.write('### Prediction') 
     st.write('### '+str(prediction))
 
+    st.write('Original MNIST Dataset available as PNGs at: https://github.com/manassharma07/MNIST-PLUS/tree/main/mnist_orig_png')
+
     st.write('## Breakdown of the prediction process:') 
 
     st.write('### Image being used as input')
@@ -172,8 +174,8 @@ if canvas_result.image_data is not None:
 
 
 
-    st.write('### Code used for training the neural network: [Jupyter Notebook](https://github.com/manassharma07/crysx_nn/blob/main/examples/NN_MNIST_orig_from_raw_png_crysx.ipynb)')    
-    st.code('''
+st.write('### Code used for training the neural network: [Jupyter Notebook](https://github.com/manassharma07/crysx_nn/blob/main/examples/NN_MNIST_orig_from_raw_png_crysx.ipynb)')    
+st.code('''
     from crysx_nn import mnist_utils as mu
     import numpy as np
 

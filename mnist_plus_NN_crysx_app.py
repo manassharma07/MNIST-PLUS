@@ -140,6 +140,8 @@ if canvas_result.image_data is not None:
     st.write('### Prediction') 
     st.write('### '+str(prediction))
 
+    st.write('MNIST_Plus Dataset (with more handwritten samples added by me) available as PNGs at: https://github.com/manassharma07/MNIST-PLUS/tree/main/mnist_plus_png')
+
     st.write('## Breakdown of the prediction process:') 
 
     st.write('### Image being used as input')
@@ -169,8 +171,9 @@ if canvas_result.image_data is not None:
     st.write('### Certainties %')    
     st.write(top_3_certainties)
 
-    st.write('### Code used for training the neural network: [Jupyter Notebook](https://github.com/manassharma07/crysx_nn/blob/main/examples/NN_MNIST_plus_from_raw_png_crysx.ipynb)')    
-    st.code('''
+
+st.write('### Code used for training the neural network: [Jupyter Notebook](https://github.com/manassharma07/crysx_nn/blob/main/examples/NN_MNIST_plus_from_raw_png_crysx.ipynb)')    
+st.code('''
     from crysx_nn import mnist_utils as mu
     import numpy as np
 
@@ -266,4 +269,4 @@ if canvas_result.image_data is not None:
     predictions, error, accuracy = model.predict(inputs, outputs, loss_func_name='BCE', get_accuracy=True)
     print('Error:',error)
     print('Accuracy %:',accuracy*100)
-    ''')
+    ''')   
