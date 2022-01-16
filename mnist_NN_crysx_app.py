@@ -151,7 +151,7 @@ if canvas_result.image_data is not None:
     st.write('### Prediction') 
     st.write('### '+str(prediction))
 
-    # st.write('Original MNIST Dataset available as PNGs at: https://github.com/manassharma07/MNIST-PLUS/tree/main/mnist_orig_png')
+    st.write('Original MNIST Dataset available as PNGs at: https://github.com/manassharma07/MNIST-PLUS/tree/main/mnist_orig_png')
 
     st.write('## Breakdown of the prediction process:') 
 
