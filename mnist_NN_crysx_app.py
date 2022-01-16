@@ -85,7 +85,7 @@ if canvas_result.image_data is not None:
     # Convert it to grayscale
     input_image_gs = input_image.convert('L')
     input_image_gs_np = np.asarray(input_image_gs.getdata()).reshape(200,200)
-    all_zeros = not np.any(a)
+    all_zeros = not np.any(input_image_gs_np)
     if not all_zeros:
         # st.write('### Image as a grayscale Numpy array')
         # st.write(input_image_gs_np)
