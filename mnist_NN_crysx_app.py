@@ -158,8 +158,8 @@ if canvas_result.image_data is not None:
     st.write('### Image being used as input')
     st.image(canvas_result.image_data)
 
-    st.write('### Image as a grayscale Numpy array')
-    st.write(input_image_gs_np)
+    # st.write('### Image as a grayscale Numpy array')
+    # st.write(input_image_gs_np)
 
     st.write('### Processing steps:')
     st.write('1. Find the bounding box of the digit blob and use that.')
