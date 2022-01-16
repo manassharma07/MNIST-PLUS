@@ -18,8 +18,9 @@ def create_and_load_model():
     # Load the preoptimized weights and biases
     model.load_model_weights('NN_crysx_mnist_98.11_streamlit_weights')
     model.load_model_biases('NN_crysx_mnist_98.11_streamlit_biases')
+    return model
 
-create_and_load_model()
+model = create_and_load_model()
 
 st.write('# MNIST Digit Recognition')
 st.write('## Using a `CrysX-NN` neural network model')
@@ -30,7 +31,7 @@ stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 9)
 
 realtime_update = st.sidebar.checkbox("Update in realtime", True)
 
-@st.cache
+# @st.cache
 def make_sidebar():
     # st.sidebar.markdown("## [CrysX-NN](https://github.com/manassharma07/crysx_nn)")
     st.sidebar.write('\n\n ## Neural Network Library Used')
