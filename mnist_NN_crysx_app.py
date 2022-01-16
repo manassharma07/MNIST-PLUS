@@ -6,7 +6,7 @@ from PIL import Image
 import cv2
 from crysx_nn import network
 
-# @st.cache
+@st.cache
 def create_and_load_model():
     nInputs = 784 # No. of nodes in the input layer
     neurons_per_layer = [256, 10] # Neurons per layer (excluding the input layer)
@@ -147,7 +147,7 @@ if canvas_result.image_data is not None:
 
 
         ### Compute the predictions
-        output_probabilities = model.predict(tensor_image.reshape(1,784))
+        output_probabilities = model.predict(tensor_image.reshape(1,784).astype(np.float32))
         prediction = np.argmax(output_probabilities)
 
         top_3_probabilities = output_probabilities[0].argsort()[-3:][::-1]

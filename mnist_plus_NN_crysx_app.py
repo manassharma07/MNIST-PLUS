@@ -134,7 +134,7 @@ if canvas_result.image_data is not None:
 
 
     ### Compute the predictions
-    output_probabilities = model.predict(tensor_image.reshape(1,784))
+    output_probabilities = model.predict(tensor_image.reshape(1,784).astype(np.float32))
     prediction = np.argmax(output_probabilities)
 
     top_3_probabilities = output_probabilities[0].argsort()[-3:][::-1]
