@@ -133,7 +133,7 @@ if canvas_result.image_data is not None:
     # im = Image.fromarray(tensor_image.reshape(28,28), mode='L')
     # im.save("processed_tensor.png", "PNG")
     # So we use matplotlib to save it instead
-    plt.imsave('processed_tensor.png',tensor_image.reshape(28,28), cmap='gray')
+    # plt.imsave('processed_tensor.png',tensor_image.reshape(28,28), cmap='gray')
 
     # st.write('### Processed image')
     # st.image('processed_tensor.png')
@@ -168,11 +168,11 @@ if canvas_result.image_data is not None:
     st.write('4. Normalize the image to have pixel values between 0 and 1.')
     st.write('5. Standardize the image using the mean and standard deviation of the MNIST training dataset.')
 
-    st.write('### Processed image')
-    st.image('processed_tensor.png')
+    # st.write('### Processed image')
+    # st.image('processed_tensor.png')
 
     st.write('### Processed Image as a grayscale Numpy array')
-    st.write(input_image_gs_np)
+    st.write(tensor_image.reshape(28,28))
 
 
 
