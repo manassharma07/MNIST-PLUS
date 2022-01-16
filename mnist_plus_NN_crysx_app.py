@@ -123,8 +123,8 @@ if canvas_result.image_data is not None:
     # st.write('5. Standardize the image using the mean and standard deviation of the MNIST_plus dataset.')
 
     # The following gives noisy image because the values are from -1 to 1, which is not a proper image format
-    im = Image.fromarray(tensor_image.reshape(28,28), mode='L')
-    im.save("processed_tensor.png", "PNG")
+    # im = Image.fromarray(tensor_image.reshape(28,28), mode='L')
+    # im.save("processed_tensor.png", "PNG")
     # So we use matplotlib to save it instead
     plt.imsave('processed_tensor.png',tensor_image.reshape(28,28), cmap='gray')
 
