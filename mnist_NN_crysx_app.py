@@ -40,7 +40,7 @@ def make_sidebar():
     st.sidebar.write('## Neural Network Architecture Used')
     st.sidebar.write('1. **Inputs**: Flattened 28x28=784')
     st.sidebar.write('2. **Hidden layer** of size **256** with **ReLU** activation Function')
-    st.sidebar.write('Training was done for 10 epochs using Stochastic Gradient Descent with ')
+    st.sidebar.write('Training was done for 9 epochs using Stochastic Gradient Descent with ')
     st.sidebar.write('\n * Categorical Cross Entropy Loss function \n * learning rate = 0.3 \n * batch size = 200')
     # st.sidebar.image('neural_network_visualization.png')
 
