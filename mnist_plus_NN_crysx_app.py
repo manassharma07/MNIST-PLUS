@@ -27,7 +27,7 @@ st.write('## Using a `CrysX-NN` neural network model')
 
 st.write('### Draw a digit in 0-9 in the box below')
 # Specify canvas parameters in application
-stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 9)
+stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 6)
 
 realtime_update = st.sidebar.checkbox("Update in realtime", True)
 
@@ -39,7 +39,8 @@ st.sidebar.write('## Neural Network Architecture Used')
 st.sidebar.write('1. **Inputs**: Flattened 28x28=784')
 st.sidebar.write('2. **Hidden layer** of size **256** with **ReLU** activation Function')
 st.sidebar.write('3. **Output layer** of size **10** with **Softmax** activation Function')
-st.sidebar.write('Training was done for 10 epochs with Binary Cross Entropy Loss function.')
+st.sidebar.write('Training was done for 10 epochs using Stochastic Gradient Descent with ')
+st.sidebar.write('\n * Categorical Cross Entropy Loss function \n * learning rate = 0.3 \n * batch size = 200')
 # st.sidebar.image('neural_network_visualization.png')
 
 # Create a canvas component

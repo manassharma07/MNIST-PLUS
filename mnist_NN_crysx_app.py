@@ -27,7 +27,7 @@ st.write('## Using a `CrysX-NN` neural network model')
 
 st.write('### Draw a digit in 0-9 in the box below')
 # Specify canvas parameters in application
-stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 9)
+stroke_width = st.sidebar.slider("Stroke width: ", 1, 25, 6)
 
 realtime_update = st.sidebar.checkbox("Update in realtime", True)
 
@@ -40,8 +40,8 @@ def make_sidebar():
     st.sidebar.write('## Neural Network Architecture Used')
     st.sidebar.write('1. **Inputs**: Flattened 28x28=784')
     st.sidebar.write('2. **Hidden layer** of size **256** with **ReLU** activation Function')
-    st.sidebar.write('3. **Output layer** of size **10** with **Softmax** activation Function')
-    st.sidebar.write('Training was done for 10 epochs with Binary Cross Entropy Loss function.')
+    st.sidebar.write('Training was done for 10 epochs using Stochastic Gradient Descent with ')
+    st.sidebar.write('\n * Categorical Cross Entropy Loss function \n * learning rate = 0.3 \n * batch size = 200')
     # st.sidebar.image('neural_network_visualization.png')
 
 make_sidebar()
@@ -197,99 +197,99 @@ if canvas_result.image_data is not None:
 
 st.write('### Code used for training the neural network: [Jupyter Notebook](https://github.com/manassharma07/crysx_nn/blob/main/examples/NN_MNIST_orig_from_raw_png_crysx.ipynb)')    
 # st.code('''
-#     from crysx_nn import mnist_utils as mu
-#     import numpy as np
+    # from crysx_nn import mnist_utils as mu
+    # import numpy as np
 
-#     # Download MNIST_orig and MNIST_plus datasets  (May take upto 5 min)
-#     mu.downloadMNIST()
+    # # Download MNIST_orig and MNIST_plus datasets  (May take upto 5 min)
+    # mu.downloadMNIST()
 
-#     ## Load the training dataset from MNIST_orig in memory (May take upto 5 min)
-#     path = 'MNIST-PLUS-PNG/mnist_orig_png'
-#     trainData, trainLabels = mu.loadMNIST(path_main=path, train=True, shuffle=True)
+    # ## Load the training dataset from MNIST_orig in memory (May take upto 5 min)
+    # path = 'MNIST-PLUS-PNG/mnist_orig_png'
+    # trainData, trainLabels = mu.loadMNIST(path_main=path, train=True, shuffle=True)
 
-#     ## Normalize within the range [0,1.0]
-#     trainData = trainData/255 # Normalize
+    # ## Normalize within the range [0,1.0]
+    # trainData = trainData/255 # Normalize
 
-#     trainData_mean = trainData.mean()
-#     trainData_std = trainData.std()
+    # trainData_mean = trainData.mean()
+    # trainData_std = trainData.std()
 
-#     ## Standardize the data so that it has mean 0 and variance 1
-#     trainData = (trainData - np.mean(trainData)) / np.std(trainData)
+    # ## Standardize the data so that it has mean 0 and variance 1
+    # trainData = (trainData - np.mean(trainData)) / np.std(trainData)
 
-#     ## Convert labels to one-hot vectors
-#     trainLabels = mu.one_hot_encode(trainLabels, 10)
+    # ## Convert labels to one-hot vectors
+    # trainLabels = mu.one_hot_encode(trainLabels, 10)
 
-#     ## Flatten the input numpy arrays (nSamples,28,28)->(nSamples, 784)
-#     trainData = trainData.reshape(trainData.shape[0], 784)
+    # ## Flatten the input numpy arrays (nSamples,28,28)->(nSamples, 784)
+    # trainData = trainData.reshape(trainData.shape[0], 784)
 
-#     ## Let us create a NN using CrysX-NN now
-#     nInputs = 784 # No. of nodes in the input layer
-#     neurons_per_layer = [256, 10] # Neurons per layer (excluding the input layer)
-#     activation_func_names = ['ReLU', 'Softmax']
-#     nLayers = len(neurons_per_layer)
-#     nEpochs = 10
-#     batchSize = 32 # No. of input samples to process at a time for optimization
+    # ## Let us create a NN using CrysX-NN now
+    # nInputs = 784 # No. of nodes in the input layer
+    # neurons_per_layer = [256, 10] # Neurons per layer (excluding the input layer)
+    # activation_func_names = ['ReLU', 'Softmax']
+    # nLayers = len(neurons_per_layer)
+    # nEpochs = 10
+    # batchSize = 32 # No. of input samples to process at a time for optimization
 
-#     from crysx_nn import network
-#     model = network.nn_model(nInputs=nInputs, neurons_per_layer=neurons_per_layer, activation_func_names=activation_func_names, batch_size=batchSize, device='CPU', init_method='Xavier') 
+    # from crysx_nn import network
+    # model = network.nn_model(nInputs=nInputs, neurons_per_layer=neurons_per_layer, activation_func_names=activation_func_names, batch_size=batchSize, device='CPU', init_method='Xavier') 
 
-#     model.lr = 0.4
+    # model.lr = 0.4
 
-#     ## Check the model details
-#     model.details()
-#     model.visualize()
+    # ## Check the model details
+    # model.details()
+    # model.visualize()
 
-#     ## Optimize/Train the network
-#     inputs = trainData.astype(np.float32)
-#     outputs = trainLabels.astype(np.float32)
-#     # Run optimization
-#     # model.optimize(inputs, outputs, lr=0.4,nEpochs=nEpochs,loss_func_name='BCE', miniterEpoch=1, batchProgressBar=True, miniterBatch=100)
-#     # To get accuracies at each epoch
-#     model.optimize(inputs, outputs, lr=0.4,nEpochs=nEpochs,loss_func_name='BCE', miniterEpoch=1, batchProgressBar=True, miniterBatch=100, get_accuracy=True)
+    # ## Optimize/Train the network
+    # inputs = trainData.astype(np.float32)
+    # outputs = trainLabels.astype(np.float32)
+    # # Run optimization
+    # # model.optimize(inputs, outputs, lr=0.4,nEpochs=nEpochs,loss_func_name='BCE', miniterEpoch=1, batchProgressBar=True, miniterBatch=100)
+    # # To get accuracies at each epoch
+    # model.optimize(inputs, outputs, lr=0.4,nEpochs=nEpochs,loss_func_name='BCE', miniterEpoch=1, batchProgressBar=True, miniterBatch=100, get_accuracy=True)
 
-#     ## Error at each epoch
-#     print(model.errors)
+    # ## Error at each epoch
+    # print(model.errors)
 
-#     ## Accuracy at each epoch
-#     print(model.accuracy)
+    # ## Accuracy at each epoch
+    # print(model.accuracy)
 
-#     ## Save model weights and biases
-#     # Save weights
-#     model.save_model_weights('NN_crysx_mnist_98.11_weights')
-#     # Save biases
-#     model.save_model_biases('NN_crysx_mnist_98.11_biases')
+    # ## Save model weights and biases
+    # # Save weights
+    # model.save_model_weights('NN_crysx_mnist_98.11_weights')
+    # # Save biases
+    # model.save_model_biases('NN_crysx_mnist_98.11_biases')
 
-#     ## Load model weights and biases from files
-#     model.load_model_weights('NN_crysx_mnist_98.11_weights')
-#     model.load_model_biases('NN_crysx_mnist_98.11_biases')
+    # ## Load model weights and biases from files
+    # model.load_model_weights('NN_crysx_mnist_98.11_weights')
+    # model.load_model_biases('NN_crysx_mnist_98.11_biases')
 
-#     ## Test data set
-#     path = 'MNIST-PLUS-PNG/mnist_orig_png'
-#     testData, testLabels = mu.loadMNIST(path_main=path, train=False, shuffle=True)
-
-
-#     ## Normalize within the range [0,1.0]
-
-#     testData = testData/255. # Normalize
-
-#     ## Standardize the data so that it has mean 0 and variance 1
-#     # Use the mean and std of training data **********
-#     testData = (testData - trainData_mean) / trainData_std
+    # ## Test data set
+    # path = 'MNIST-PLUS-PNG/mnist_orig_png'
+    # testData, testLabels = mu.loadMNIST(path_main=path, train=False, shuffle=True)
 
 
-#     ## Convert labels to one-hot vectors
-#     testLabels = mu.one_hot_encode(testLabels, 10)
+    # ## Normalize within the range [0,1.0]
+
+    # testData = testData/255. # Normalize
+
+    # ## Standardize the data so that it has mean 0 and variance 1
+    # # Use the mean and std of training data **********
+    # testData = (testData - trainData_mean) / trainData_std
 
 
-#     ## Flatten the input numpy arrays (nSamples,28,28)->(nSamples, 784)
-#     testData = testData.reshape(testData.shape[0], 784)
+    # ## Convert labels to one-hot vectors
+    # testLabels = mu.one_hot_encode(testLabels, 10)
 
-#     ## Performance on Test data
-#     # Convert to float32 arrays
-#     inputs = testData.astype(np.float32)
-#     outputs = testLabels.astype(np.float32)
+
+    # ## Flatten the input numpy arrays (nSamples,28,28)->(nSamples, 784)
+    # testData = testData.reshape(testData.shape[0], 784)
+
+    # ## Performance on Test data
+    # # Convert to float32 arrays
+    # inputs = testData.astype(np.float32)
+    # outputs = testLabels.astype(np.float32)
     
-#     predictions, error, accuracy = model.predict(inputs, outputs, loss_func_name='BCE', get_accuracy=True)
-#     print('Error:',error)
-#     print('Accuracy %:',accuracy*100)
+    # predictions, error, accuracy = model.predict(inputs, outputs, loss_func_name='BCE', get_accuracy=True)
+    # print('Error:',error)
+    # print('Accuracy %:',accuracy*100)
 #     ''')
