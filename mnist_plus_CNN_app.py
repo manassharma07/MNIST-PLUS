@@ -124,7 +124,9 @@ if canvas_result.image_data is not None:
     with torch.no_grad():
         # input image for network should be (1,1,28,28)
         output0 = Network(torch.unsqueeze(tensor_image, dim=0).to(device=device))
-           
+        # Need to apply Softmax here to get probabilities
+        m = torch.nn.Softmax(dim=1)
+        output0 = m(output0)
         # st.write(output0)
         certainty, output = torch.max(output0[0], 0)
         certainty = certainty.clone().cpu().item()
